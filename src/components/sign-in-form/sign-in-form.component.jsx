@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./sign-in-form.styles.scss";
 import {
   auth,
@@ -10,6 +10,7 @@ import {
 import { signInWithEmailAndPassword } from "firebase/auth";
 import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
+import { UserContext } from "../../contexts/user.context";
 
 const defaultFormFields = {
   email: "",
@@ -30,11 +31,11 @@ const SignInForm = () => {
     e.preventDefault();
 
     try {
-      const response = await signInAuthUserWithEmailAndPassword(
+      const { user } = await signInAuthUserWithEmailAndPassword(
         email,
         password
       );
-      console.log(response);
+
       resetFormFields();
     } catch (error) {
       switch (error.code) {
@@ -58,8 +59,7 @@ const SignInForm = () => {
   };
 
   const signInWithGoogle = async () => {
-    const { user } = await signInWithGooglePopup();
-    await createUserDocumentFromAuth(user);
+    await signInWithGooglePopup();
   };
 
   //See if userAuth

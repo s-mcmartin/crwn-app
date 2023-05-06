@@ -22,5 +22,10 @@
   text-decoration: none;
   padding: 0 1rem;
   color: #777;
+  transition: all 0.2s;
+}
+.navigation-container .nav-links-container .nav-link:hover {
+  background-color: black;
+  color: white;
 }
 /*# sourceMappingURL=navigation.styles.css.map */
