@@ -6,6 +6,7 @@
   top: 0;
   background-color: white;
   z-index: 10;
+  color: #777;
 
   & .logo-container {
     align-self: center;
@@ -20,6 +21,7 @@
     & .nav-link {
       text-decoration: none;
       padding: 0 1rem;
+      color: #777;
     }
   }
 }
