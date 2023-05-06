@@ -1,0 +1,25 @@
+.navigation-container {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 10;
+
+  & .logo-container {
+    align-self: center;
+    margin-right: auto;
+  }
+
+  & .nav-links-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    & .nav-link {
+      text-decoration: none;
+      padding: 0 1rem;
+    }
+  }
+}
