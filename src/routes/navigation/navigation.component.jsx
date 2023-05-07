@@ -4,8 +4,16 @@ import { ReactComponent as CrwnLogo } from "../../assets/crown.svg";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/user.context";
 import { signOutUser } from "../../utils/firebase/firebase.utils";
+import CartIcon from "../../components/cart-icon/cart-icon.component";
+import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component";
+import { CartContext } from "../../contexts/cart.context";
 const Navigation = () => {
   const { currentUser } = useContext(UserContext);
+  const { isCartOpen } = useContext(CartContext);
+
+  const handleClick = (e) => {
+    e.preventDefault();
+  };
 
   return (
     <>
@@ -17,6 +25,9 @@ const Navigation = () => {
           <Link className="nav-link" to="/shop">
             SHOP
           </Link>
+          <Link className="nav-link" to="/contact">
+            CONTACT
+          </Link>
           <Link className="nav-link" to="auth">
             {currentUser ? (
               <span className="nav-link" onClick={signOutUser}>
@@ -26,11 +37,9 @@ const Navigation = () => {
               <span>SIGN IN</span>
             )}
           </Link>
-
-          <Link className="nav-link" to="/shop">
-            SHOP
-          </Link>
+          <CartIcon onClick={() => {}} />
         </div>
+        {isCartOpen && <CartDropdown />};
       </div>
       <Outlet />
     </>
